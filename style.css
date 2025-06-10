@@ -74,6 +74,16 @@ header {
     box-shadow: 0 0.125rem 0.313rem rgba(0,0,0,0.1);
     z-index: 1000;
     color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+#cart-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 #cart-container h2 {

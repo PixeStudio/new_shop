@@ -32,42 +32,60 @@ function updateCartCount() {
 }
 
 function renderCart() {
-  const cartList = document.getElementById("cart-items");
-  cartList.innerHTML = "";
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = "";
 
-  cart.forEach((item, index) => {
-    const li = document.createElement("li");
+    cart.forEach((item) => {
+        const li = document.createElement("li");
 
-    // Lewa strona: info + nazwa + cena
-    const leftContainer = document.createElement("div");
-    leftContainer.style.display = "flex";
-    leftContainer.style.alignItems = "center";
-    leftContainer.style.gap = "0.5rem";
+        const leftContainer = document.createElement("div");
+        leftContainer.style.display = "flex"
+        leftContainer.style.flexDirection = "column";
+        leftContainer.style.alignItems = "flex-start";
 
-    const infoIcon = document.createElement("i");
-    infoIcon.className = "fas fa-info-circle info-icon";
+        const productName = document.createElement("span");
+        productName.textContent = item.name;
+        productName.classList.add("product-name");
+        productName.style.marginBottom = "0.25rem";
+        productName.style.color = "#434343";
+        productName.style.fontSize = "0.9em";
+        productName.style.fontWeight = "bold";
+        
 
-    const productText = document.createElement("span");
-    productText.textContent = `${item.name} - ${item.price}`;
+        const productPrice = document.createElement("span");
+        productPrice.textContent = item.price;
+        productPrice.classList.add("product-price");
+        productPrice.style.fontSize = "0.82em";
+        productPrice.style.color = "#525252";
+        productPrice.style.fontWeight = "bold";
 
-    leftContainer.appendChild(infoIcon);
-    leftContainer.appendChild(productText);
 
-    // Prawa strona: X
-    const removeButton = document.createElement("i");
-    removeButton.className = "fas fa-times remove-button";
-    removeButton.addEventListener("click", () => {
-      removeItem(index);
+        leftContainer.appendChild(productName);
+        leftContainer.appendChild(productPrice);
+
+        const rightContainer = document.createElement("div");
+        rightContainer.style.display = "flex";
+        rightContainer.style.alignItems = "center";
+        rightContainer.style.gap = "0.5rem";
+
+        const infoIcon = document.createElement("i")
+        infoIcon.className = "fas fa-info-circle info-icon";
+
+        const removeButton = document.createElement("i");
+        removeButton.className = "fas fa-times remove-button";
+        removeButton.addEventListener("click", () =>{
+            removeItem(index);
+        });
+
+        rightContainer.appendChild(infoIcon);
+        rightContainer.appendChild(removeButton);
+
+        li.appendChild(leftContainer);
+        li.appendChild(rightContainer);
+
+        cartList.appendChild(li);
     });
-
-    // Dodaj do li
-    li.appendChild(leftContainer);
-    li.appendChild(removeButton);
-
-    cartList.appendChild(li);
-  });
 }
-
 
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -75,13 +93,30 @@ function saveCart() {
 
 const cartIcon = document.querySelector(".cart-wrapper");
 const cartContainer = document.querySelector("#cart-container");
+let hideCartTimeout;
 cartIcon.addEventListener("mouseenter", () => {
-    clearTimeout(cartTimeout);
-    cartContainer.style.display = "block"; 
+    cartContainer.style.display = "block";
+    setTimeout(() => {
+    cartContainer.classList.add("show");
+}, 10);
 });
 
 cartIcon.addEventListener("mouseleave", () => {
-    cartTimeout = setTimeout(() => {
+    hideCartTimeout = setTimeout(() => {
+        cartContainer.classList.remove("show");
+        setTimeout(() => {
+            cartContainer.style.display = "none";
+        }, 300);
+    }, 500);
+});
+
+cartContainer.addEventListener("mouseenter", () => {
+    clearTimeout(hideCartTimeout);
+});
+
+cartContainer.addEventListener("mouseleave", () => {
+    cartContainer.classList.remove("show");
+    setTimeout(() => {
         cartContainer.style.display = "none";
     }, 300);
 });
