@@ -24,6 +24,31 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
+        <section id="auth-section">
+          <!-- Przyciski u góry strony -->
+          <div id="auth-buttons">
+            <button id="login-btn">Zaloguj się</button>
+            <button id="register-btn">Zarejestruj się</button>
+          </div>
+
+          <!-- Modal -->
+          <div id="auth-modal" class="hidden">
+            <div id="modal-content">
+              <span id="close-modal">&times;</span>
+              <h2 id="modal-title">Logowanie</h2>
+              <form id="auth-form">
+                <input type="text" id="username" placeholder="Login" required />
+                <input type="password" id="password" placeholder="Hasło" required />
+                <button type="submit">Zaloguj</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tło do blur -->
+        <div id="blur-background" class="hidden"></div>
+
+        </section>
         <div class="cart-wrapper">
             <div class="cart">
                 <a href="#"><i class="fas fa-shopping-cart"></i><span >Cart (<span id="cart-count">0</span>)</span></a>

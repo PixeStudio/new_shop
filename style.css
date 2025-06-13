@@ -59,6 +59,103 @@ header {
     font-weight: bold;
 }
 
+/*FORMULARZ LOGOWANIA*/
+
+#auth-buttons {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9;
+    display: flex;
+    gap: 1rem;
+}
+
+#auth-buttons button {
+    background: transparent;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#auth-buttons button:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+#blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+#auth-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255,255,255,0.8);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 30;
+    width: 300px;
+    max-width: 90%;
+}
+
+#auth-modal h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#auth-modal input {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+#auth-modal button {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#auth-modal button:hover {
+    background-color: #45a049;
+}
+
+#close-modal{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
 /*KOSZYK Z ZAKUPAMI*/
 
 #cart-container {
