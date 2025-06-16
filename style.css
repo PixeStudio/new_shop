@@ -284,17 +284,22 @@ main {
     transform: translateY(20px);
 }
 
-.product-list .product {
-    animation: fadeInUp 0.5s forwards;
+/*.product-list .product {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
 }
 
-@key-frames fadeInUp {
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
+*/
 .product img {
     max-width: 100%;
     height: auto;
@@ -325,6 +330,11 @@ main {
 
 .product button:hover {
     background-color: #45a049;
+}
+
+.product[data-aos] {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
 }
 
 /*FOOTER*/
