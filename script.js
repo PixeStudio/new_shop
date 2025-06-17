@@ -139,4 +139,43 @@ function removeItem(index) {
     saveCart();
 }
 
+/*PRODUCT'S MODALS*/
+
+const modal = document.getElementById("product-modal");
+const modalBody = document.getElementById("modal-body");
+const closeButton = document.querySelector(".close-button");
+
+closeButton.addEventListener("click", () => {
+    modal.classList.add("hidden");
+});
+
+modal.addEventListener("click", (e) => {
+    if(e.target === modal) {
+        modal.classList.add("hidden");
+    }
+});
+
+document.querySelectorAll(".product").forEach((product) =>{
+    product.addEventListener("click", () =>{
+        const name = product.querySelector("h2").textContent;
+        const price = product.querySelector("p").textContent;
+        const img= product.querySelector("img").getAttribute("src");
+
+        modalBody.innerHTML = `
+            <img src="${img}" alt="${name}" style="max-width: 100%; border-radius: 8px;">
+            <h2 style="margin-top: 1rem;">${name}</h2>
+            <p>${price}</p>
+            <p style="font-size: 0.9rem; color: #555;">Lorem ipsum dolor sit amet</p>
+            <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
+            <button style="background-color: green; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px;">
+                Add to cart
+            </button>
+            <button style="background-color: red; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px;">
+                Cancel
+            </button>
+            </div>`;
+            modal.classList.remove("hidden");
+    });
+});
+
 });
