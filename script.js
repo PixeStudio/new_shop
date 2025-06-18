@@ -1,13 +1,14 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-let cart = [];
-let cartTimeout;
+    let cart = [];
+    let cartTimeout;
+    const isLoggedIn = false;
 
-const storedCart = localStorage.getItem("cart");
-if(storedCart) {
-    cart = JSON.parse(storedCart);
-    updateCartCount();
-    renderCart();
+    const storedCart = localStorage.getItem("cart");
+    if(storedCart) {
+        cart = JSON.parse(storedCart);
+        updateCartCount();
+        renderCart();
 }
 
 const addToCartButtons = document.querySelectorAll(".product-button");
@@ -166,13 +167,9 @@ document.querySelectorAll(".product").forEach((product) =>{
             <h2 style="margin-top: 1rem;">${name}</h2>
             <p>${price}</p>
             <p style="font-size: 0.9rem; color: #555;">Lorem ipsum dolor sit amet</p>
-            <div style="margin-top: 1rem; display: flex; justify-content: space-between;">
-            <button style="background-color: green; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px;">
-                Add to cart
-            </button>
-            <button style="background-color: red; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px;">
-                Cancel
-            </button>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-confirm">Add to cart</button>
+                <button class="modal-btn modal-btn-cancel">Cancel</button>
             </div>`;
             modal.classList.remove("hidden");
     });
