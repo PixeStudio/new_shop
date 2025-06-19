@@ -353,6 +353,12 @@ main {
     position: relative;
 }
 
+.modal-content.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.3 ease;
+}
+
 .modal-buttons {
     margin-top: 1rem;
     display: flex;

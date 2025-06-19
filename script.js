@@ -167,10 +167,39 @@ document.querySelectorAll(".product").forEach((product) =>{
             <h2 style="margin-top: 1rem;">${name}</h2>
             <p>${price}</p>
             <p style="font-size: 0.9rem; color: #555;">Lorem ipsum dolor sit amet</p>
+            <label for="quantity" style="font-size: 0.9rem">Select quantity</label>
+            <input type="number" id="quantity" name="quantity" min="0" value="1" style="width: 15%; margin-bottom: 1rem;
+            padding: 0.5rem; border:1px solid #ccc; border-radius: 5px;">
+            <p style="display: inline-block">kg</p>
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-confirm">Add to cart</button>
                 <button class="modal-btn modal-btn-cancel">Cancel</button>
             </div>`;
+
+
+            const addButton = modalBody.querySelector(".modal-btn-confirm");
+            const cancelButton = modalBody.querySelector(".modal-btn-cancel");
+            const quantityInput = modalBody.querySelector("#quantity");
+            const toast = document.getElementById("toast-message");
+
+            addButton.addEventListener("click", () => {
+                const quantity = parseFloat(quantityInput.value) || 1;
+                toast.innerHTML = `<em>added to cart</em>`;
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 1500);
+            });
+
+            cancelButton.addEventListener("click", () => {
+                modal.querySelector(".modal-content").classList.add("fade-out");
+                setTimeout(() => {
+                    modal.classList.add("hidden");
+                    modal.querySelector(".modal-content").classList.remove("fade-out");
+                }, 500);
+            });
+
             modal.classList.remove("hidden");
     });
 });
