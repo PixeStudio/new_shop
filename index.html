@@ -36,6 +36,18 @@
         <button id="login-btn">Zaloguj się</button>
         <button id="register-btn">Zarejestruj się</button>
       </div>
+      <div id="auth-modal" class="hidden">
+            <div id="modal-content">
+              <span id="close-modal">&times;</span>
+              <h2 id="modal-title">Logowanie</h2>
+              <form id="auth-form">
+                <input type="text" id="username" placeholder="Login" required />
+                <input type="password" id="password" placeholder="Hasło" required />
+                <button type="submit" id="login-btn">Zaloguj</button>
+              </form>
+            </div>
+          </div>
+          <div id="blur-background" class="hidden"></div>
       <div class="cart-wrapper hidden">
         <a href="#"><i class="fas fa-shopping-cart"></i> <span id="cart-count">Cart (0)</span></a>
       </div>
@@ -51,73 +63,73 @@
   <!-- Main Content -->
   <main>
     <section class="product-list">
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main.png" alt="Product 1">
         <h2>EKO MARCHEWKA</h2>
         <p>$10.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="pc" ...>
         <img src="images/product_main1.png" alt="Product 2">
         <h2>BIO AWOKADO</h2>
         <p>$15.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main.png" alt="Product 1">
         <h2>EKO MARCHEWKA</h2>
         <p>$10.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main1.png" alt="Product 2">
         <h2>BIO AWOKADO</h2>
         <p>$15.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-            <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+            <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-            <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+            <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>
         <button class="product-button">Add to Cart</button>
       </div>
-      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-unit="kg" ...>
         <img src="images/product_main2.png" alt="Product 3">
         <h2>BIO JABŁKA Z POLSKI</h2>
         <p>$20.00</p>

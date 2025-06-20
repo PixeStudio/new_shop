@@ -140,11 +140,54 @@ function removeItem(index) {
     saveCart();
 }
 
+/*AUTHORIZATION MODAL*/
+
+const authModal = document.getElementById("auth-modal");
+const blurBackground = document.getElementById("blur-background");
+const closeAuthModal = document.getElementById("close-modal");
+const authForm = document.getElementById("auth-form");
+const loginTrigger = document.getElementById("login-btn");
+
+loginTrigger.addEventListener("click", () => {
+  authModal.classList.remove("hidden");
+  blurBackground.classList.remove("hidden");
+});
+
+closeAuthModal.addEventListener("click", () => {
+  authModal.classList.add("hidden");
+  blurBackground.classList.add("hidden");
+});
+
+blurBackground.addEventListener("click", () => {
+  authModal.classList.add("hidden");
+  blurBackground.classList.add("hidden");
+});
+
+authForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+
+  console.log(`Zalogowano jako: ${username}`);
+
+  localStorage.setItem("isLoggedIn", "true");
+
+  authModal.classList.add("hidden");
+  blurBackground.classList.add("hidden");
+});
+
+
 /*PRODUCT'S MODALS*/
 
 const modal = document.getElementById("product-modal");
 const modalBody = document.getElementById("modal-body");
 const closeButton = document.querySelector(".close-button");
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && ! modal.classList.contains("hidden")) {
+        modal.classList.add("hidden");
+    }
+});
 
 closeButton.addEventListener("click", () => {
     modal.classList.add("hidden");
@@ -161,16 +204,17 @@ document.querySelectorAll(".product").forEach((product) =>{
         const name = product.querySelector("h2").textContent;
         const price = product.querySelector("p").textContent;
         const img= product.querySelector("img").getAttribute("src");
+        const unit = product.getAttribute("data-unit") || "kg";
 
         modalBody.innerHTML = `
             <img src="${img}" alt="${name}" style="max-width: 100%; border-radius: 8px;">
             <h2 style="margin-top: 1rem;">${name}</h2>
-            <p>${price}</p>
+            <p>${price} / ${unit}</p>
             <p style="font-size: 0.9rem; color: #555;">Lorem ipsum dolor sit amet</p>
-            <label for="quantity" style="font-size: 0.9rem">Select quantity</label>
+            <label for="quantity" style="font-size: 0.9rem">Select quantity (${unit}):</label>
             <input type="number" id="quantity" name="quantity" min="0" value="1" style="width: 15%; margin-bottom: 1rem;
             padding: 0.5rem; border:1px solid #ccc; border-radius: 5px;">
-            <p style="display: inline-block">kg</p>
+            <p style="display: inline-block"></p>
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-confirm">Add to cart</button>
                 <button class="modal-btn modal-btn-cancel">Cancel</button>
