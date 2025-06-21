@@ -43,8 +43,21 @@
               <form id="auth-form">
                 <input type="text" id="username" placeholder="Login" required />
                 <input type="password" id="password" placeholder="Hasło" required />
-                <button type="submit" id="login-btn">Zaloguj</button>
+                <button type="submit" id="login-btn">Log In</button>
               </form>
+
+              <form id="register-form" class="hidden">
+                <input type="text" id="reg-username" placeholder="Login" required />
+                <input type="email" id="reg-email" placeholder="E-mail address" required />
+                <input type="password" id="reg-password" placeholder="Password" required />
+                <input type="password" id="reg-password-repeat" placeholder="Repeat password" required />
+                <label>
+                  <input type="checkbox" id="reg-terms" required />
+                  <p style="margin-bottom: 1rem; color: #333; font-size: 0.8rem;">I agree to the Terms of Service and Privacy Policy</p>
+                </label>
+                <button type="submit">Sign Up</button>
+              </form>
+              <p id="toggle-auth-mode" style="margin-top: 1rem; text-align: center; cursor: pointer; color: #727070;">New here? <strong>Create an account</strong></p>
             </div>
           </div>
           <div id="blur-background" class="hidden"></div>

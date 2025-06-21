@@ -146,7 +146,27 @@ const authModal = document.getElementById("auth-modal");
 const blurBackground = document.getElementById("blur-background");
 const closeAuthModal = document.getElementById("close-modal");
 const authForm = document.getElementById("auth-form");
+const registerForm = document.getElementById("register-form");
+const modalTitle = document.getElementById("modal-title");
+const toggleAuthMode = document.getElementById("toggle-auth-mode");
 const loginTrigger = document.getElementById("login-btn");
+let isRegistering = false;
+
+toggleAuthMode.addEventListener("click", () => {
+    isRegistering = !isRegistering;
+
+    if (isRegistering) {
+        authForm.classList.add("hidden");
+        registerForm.classList.remove("hidden");
+        modalTitle.textContent = "Create Account";
+        toggleAuthMode.innerHTML = 'Do you have an account? <strong> Log In</strong>';
+    } else {
+        authForm.classList.remove("hidden");
+        registerForm.classList.add("hidden");
+        modalTitle.textContent = "Login";
+        toggleAuthMode.innerHTML = 'New here? <strong>Create an account</strong>';
+    }
+});
 
 loginTrigger.addEventListener("click", () => {
   authModal.classList.remove("hidden");
