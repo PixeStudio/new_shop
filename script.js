@@ -269,3 +269,27 @@ document.querySelectorAll(".product").forEach((product) =>{
 });
 
 });
+
+
+let names = ["Ala", "Bartek", "Celina", "Damian", "Ela", "Franek", "Gosia", "Hubert", "Iga", "Jan"];
+
+let users = Array.from({length: names.length}, (_, i) => {
+    return {
+        "id": i+1,
+        "username": names[i],
+        "online": false
+    };
+});
+
+users.forEach(user => {
+    if(!user.online) {
+        console.log(user.username);
+    }
+});
+
+users = users.map(user => {
+    if (["A", "B", "C"].includes(user.username[0])) {
+        return { ...user, online: true};
+    }
+    return user;
+});
