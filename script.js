@@ -1,5 +1,7 @@
+import { ModalManager} from './modal-manager.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+
     let cart = [];
     let cartTimeout;
     const isLoggedIn = false;
@@ -152,6 +154,11 @@ const toggleAuthMode = document.getElementById("toggle-auth-mode");
 const loginTrigger = document.getElementById("login-btn");
 let isRegistering = false;
 
+const authModalManager = new ModalManager(authModal, {
+    blur: blurBackground,
+    closeBtn: closeAuthModal
+});
+
 toggleAuthMode.addEventListener("click", () => {
     isRegistering = !isRegistering;
 
@@ -171,16 +178,6 @@ toggleAuthMode.addEventListener("click", () => {
 loginTrigger.addEventListener("click", () => {
   authModal.classList.remove("hidden");
   blurBackground.classList.remove("hidden");
-});
-
-closeAuthModal.addEventListener("click", () => {
-  authModal.classList.add("hidden");
-  blurBackground.classList.add("hidden");
-});
-
-blurBackground.addEventListener("click", () => {
-  authModal.classList.add("hidden");
-  blurBackground.classList.add("hidden");
 });
 
 authForm.addEventListener("submit", (e) => {
@@ -203,15 +200,7 @@ const modal = document.getElementById("product-modal");
 const modalBody = document.getElementById("modal-body");
 const closeButton = document.querySelector(".close-button");
 
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && ! modal.classList.contains("hidden")) {
-        modal.classList.add("hidden");
-    }
-});
-
-closeButton.addEventListener("click", () => {
-    modal.classList.add("hidden");
-});
+const productModalManager = new ModalManager(modal, {closeBtn: closeButton});
 
 modal.addEventListener("click", (e) => {
     if(e.target === modal) {
@@ -268,28 +257,4 @@ document.querySelectorAll(".product").forEach((product) =>{
     });
 });
 
-});
-
-
-let names = ["Ala", "Bartek", "Celina", "Damian", "Ela", "Franek", "Gosia", "Hubert", "Iga", "Jan"];
-
-let users = Array.from({length: names.length}, (_, i) => {
-    return {
-        "id": i+1,
-        "username": names[i],
-        "online": false
-    };
-});
-
-users.forEach(user => {
-    if(!user.online) {
-        console.log(user.username);
-    }
-});
-
-users = users.map(user => {
-    if (["A", "B", "C"].includes(user.username[0])) {
-        return { ...user, online: true};
-    }
-    return user;
 });
