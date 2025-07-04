@@ -154,10 +154,20 @@ const toggleAuthMode = document.getElementById("toggle-auth-mode");
 const loginTrigger = document.getElementById("login-btn");
 let isRegistering = false;
 
+loginTrigger.addEventListener("click", () => {
+    authModalManager.showModal();
+});
+
 const authModalManager = new ModalManager(authModal, {
     blur: blurBackground,
     closeBtn: closeAuthModal
 });
+
+authModalManager.onClose(() => {
+  authForm.reset();
+  registerForm.reset();
+});
+
 
 toggleAuthMode.addEventListener("click", () => {
     isRegistering = !isRegistering;
@@ -175,10 +185,7 @@ toggleAuthMode.addEventListener("click", () => {
     }
 });
 
-loginTrigger.addEventListener("click", () => {
-  authModal.classList.remove("hidden");
-  blurBackground.classList.remove("hidden");
-});
+
 
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -189,8 +196,7 @@ authForm.addEventListener("submit", (e) => {
 
   localStorage.setItem("isLoggedIn", "true");
 
-  authModal.classList.add("hidden");
-  blurBackground.classList.add("hidden");
+  authModalManager.hideModal();
 });
 
 
@@ -204,7 +210,7 @@ const productModalManager = new ModalManager(modal, {closeBtn: closeButton});
 
 modal.addEventListener("click", (e) => {
     if(e.target === modal) {
-        modal.classList.add("hidden");
+        productModalManager.hideModal();
     }
 });
 
@@ -253,7 +259,7 @@ document.querySelectorAll(".product").forEach((product) =>{
                 }, 500);
             });
 
-            modal.classList.remove("hidden");
+            productModalManager.showModal();
     });
 });
 
