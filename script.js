@@ -191,13 +191,31 @@ authForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value;
-
-  console.log(`Zalogowano jako: ${username}`);
-
   localStorage.setItem("isLoggedIn", "true");
-
+  localStorage.setItem("username", username);
+  updateUIAfterLogin(username);
+ 
   authModalManager.hideModal();
+
+document.getElementById("logout-btn").addEventListener("click", () => {
+updateUIAfterlogout();
 });
+});
+
+function updateUIAfterLogin(username) {
+    document.getElementById("auth-buttons").style.display = "none";
+    document.getElementById("user-panel").classList.remove("hidden");
+    document.getElementById("user-name").textContent = username;
+    document.querySelector(".cart-wrapper").style.display = "flex";
+}
+
+function updateUIAfterlogout() {
+    document.getElementById("auth-buttons").style.display = "flex";
+    document.getElementById("user-panel").classList.add("hidden");
+    document.querySelector(".cart-wrapper").style.display = "none";
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
+}
 
 
 /*PRODUCT'S MODALS*/
